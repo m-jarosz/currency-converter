@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/span.css">
+    <script src="js/script.js" defer></script>
+    <title>Przelicznik walut</title>
+</head>
+<body class="body">
+    <div class="container">
+        <header class="header">
+            <h1 class="header__siteTitle">Kalkulator walut</h1>
+        </header>
+        <main class="main">
+            <form class="form js-form">
+                <label class="form__label">
+                    <span class="span form--blockPosition">Ilość złotówek</span>
+                    <input class="form__input form--blockPosition js-inputAmount" type="number" name="amount" min="1" step="1" required>
+                </label>
+                <label class="form__label">
+                    <span class="span form--blockPosition">Kupuję</span>
+                    <select class="form__select form--blockPosition js-currencyBuy" name="currencyBuy" required>
+                        <option class="form__option" value="eur" class="form__option">EUR</option>
+                        <option class="form__option" value="gbp" class="form__option">GBP</option>
+                        <option class="form__option" value="usd" class="form__option">USD</option>
+                    </select>
+                </label>
+                <button class="form__button js-resultButton">Przelicz</button>
+                <button class="form__button js-resetButton" type="reset">Wyczyść</button>
+            </form>
+            <p class="main__paragraph js-paragraphResult">Otrzymasz <span class="main__span js-result">N/A</span></p>
+        </main>
+    </div>
+    
+</body>
+</html>

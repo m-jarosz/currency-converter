@@ -1,0 +1,25 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+.body {
+    height: 100vh;
+    background: #3f5efb;
+    background: linear-gradient(45deg, #3f5efb 0%, #fed6c5 84%);
+    font-family: 'Lato', sans-serif;
+}
+
+.container {
+    max-width: 350px;
+    margin: 150px auto;
+    text-align: center;
+    background-color: #e0ffffa8;
+    border: 1px solid #999;
+    border-radius: 5px;
+}

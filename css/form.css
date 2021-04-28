@@ -1,0 +1,30 @@
+.form--blockPosition {
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 10px;
+    
+}
+
+.form__input {
+    height: 30px;
+    background-color: #e7ecee;
+    border-radius: 5px;
+}
+
+.form__input:invalid {
+    background-color: #e9c1c1;
+}
+
+.form__select {
+    height: 30px;
+    background-color: #e7ecee;
+    border-radius: 5px;
+}
+
+.form__button {
+    font-family: 'Lato', sans-serif;
+    height: 30px;
+    width: 40%; 
+    font-size: 20px;
+    border-radius: 5px;
+}
