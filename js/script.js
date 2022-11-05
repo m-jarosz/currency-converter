@@ -5,15 +5,22 @@
     const createRateValues = arr => currencyRates = [...arr];
 
     const getCurrencyRate = async () => {
-        const url = `http://api.nbp.pl/api/exchangerates/tables/c/today/`;
-        const response = await fetch(url);
-        const data = await response.json();
-        const rates = [
-            data[0].rates[0].ask,
-            data[0].rates[3].ask,
-            data[0].rates[6].ask
-        ];
-        createRateValues(rates);
+        try {
+            const url = `http://api.nbp.pl/api/exchangerates/tables/c/today/`;
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                const rates = [
+                    data[0].rates[0].ask,
+                    data[0].rates[3].ask,
+                    data[0].rates[6].ask
+                ];
+                createRateValues(rates);
+            }
+        } catch {
+            const err = new Error('Coś poszło nie tak');
+            console.log(err);
+        }
     }
 
     const calculateResult = (amount, currency) => {
@@ -54,7 +61,7 @@
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const technicalVariable = await getCurrencyRate();
+            const fetchResult = await getCurrencyRate();
             calculateResult(amountOfPLN, currencyOfBuy);
             updateResultText(calculateResult(amountOfPLN, currencyOfBuy), currencyOfBuy);
         })
