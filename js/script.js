@@ -52,9 +52,9 @@
         const amountOfPLN = document.querySelector(".js-inputAmount");
         const currencyOfBuy = document.querySelector(".js-currencyBuy");
 
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            getCurrencyRate();
+            const technicalVariable = await getCurrencyRate();
             calculateResult(amountOfPLN, currencyOfBuy);
             updateResultText(calculateResult(amountOfPLN, currencyOfBuy), currencyOfBuy);
         })
