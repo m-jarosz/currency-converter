@@ -1,12 +1,27 @@
 {
     const result = document.querySelector(".js-result");
+    let currencyRates = [];
+
+    const createRateValues = arr => currencyRates = [...arr];
+
+    const getCurrencyRate = async () => {
+        const url = `http://api.nbp.pl/api/exchangerates/tables/c/today/`;
+        const response = await fetch(url);
+        const data = await response.json();
+        const rates = [
+            data[0].rates[0].ask,
+            data[0].rates[3].ask,
+            data[0].rates[6].ask
+        ];
+        createRateValues(rates);
+    }
 
     const calculateResult = (amount, currency) => {
-        const euro = 4.56;
-        const gbp = 5.23;
-        const usd = 3.77;
+        const euro = currencyRates[1];
+        const gbp = currencyRates[2];
+        const usd = currencyRates[0];
 
-        switch(currency.value) {
+        switch (currency.value) {
             case "eur":
                 return amount.value / euro;
             case "gbp":
@@ -36,8 +51,10 @@
         const form = document.querySelector('.js-form');
         const amountOfPLN = document.querySelector(".js-inputAmount");
         const currencyOfBuy = document.querySelector(".js-currencyBuy");
+
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+            getCurrencyRate();
             calculateResult(amountOfPLN, currencyOfBuy);
             updateResultText(calculateResult(amountOfPLN, currencyOfBuy), currencyOfBuy);
         })
